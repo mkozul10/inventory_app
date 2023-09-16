@@ -52,6 +52,10 @@ app.get('/wheels', (req, res) => {
     res.render('categories/wheels',{title: 'Wheels'});
 })
 
+app.get('/new', (req, res) => {
+    res.render('categories/newPart',{title: 'New part'});
+})
+
 //404
 app.use((req,res) => {
     res.status(404).render('404', {title: '404'});
