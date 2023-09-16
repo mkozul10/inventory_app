@@ -36,6 +36,21 @@ app.get('/', (req, res) => {
     res.render('categories/index',{title: 'Car parts'});
 })
 
+app.get('/engine', (req, res) => {
+    res.render('categories/engine',{title: 'Engine parts'});
+})
+
+app.get('/interior', (req, res) => {
+    res.render('categories/interior',{title: 'Interior parts'});
+})
+
+app.get('/transmission', (req, res) => {
+    res.render('categories/transmission',{title: 'Transmission parts'});
+})
+
+app.get('/wheels', (req, res) => {
+    res.render('categories/wheels',{title: 'Wheels'});
+})
 
 //404
 app.use((req,res) => {
