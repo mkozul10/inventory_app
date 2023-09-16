@@ -1,15 +1,24 @@
 import express from 'express';
 import { render } from 'ejs';
 import morgan from 'morgan';
+import { connectToDb, getDb } from './db.js';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
-//connect to server
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
+//db and express connection
+let db;
+
+connectToDb(err => {
+    if (!err) {
+        app.listen(3000, () => {
+            console.log('Listening on port 3000');
+        })
+
+        db = getDb();
+    }
 })
 
 
