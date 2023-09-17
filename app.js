@@ -39,6 +39,18 @@ connectToDb(err => {
 })
 
 
+const getItems = async (req,res,category) => {
+    try {
+        const parts = await db.collection('products')
+            .find({category: category})
+            .toArray();
+        res.render(`categories/${category}`,{title: category, data: parts});
+    } catch (err) {
+        console.log(err);
+        res.status(500).render('404', {title: '404'});
+    }
+}
+
 //register view engine
 app.set('view engine', 'ejs');
 
@@ -56,24 +68,25 @@ app.get('/', async (req, res) => {
             .toArray();
         res.render('categories/index',{title: 'Car parts', data: parts});
     } catch (err) {
+        console.log(err);
         res.status(500).render('404', {title: '404'});
     }
 })
 
 app.get('/engine', (req, res) => {
-    res.render('categories/engine',{title: 'Engine parts'});
+    getItems(req,res,'engine');
 })
 
 app.get('/interior', (req, res) => {
-    res.render('categories/interior',{title: 'Interior parts'});
+    getItems(req,res,'interior');
 })
 
 app.get('/transmission', (req, res) => {
-    res.render('categories/transmission',{title: 'Transmission parts'});
+    getItems(req,res,'transmission');
 })
 
 app.get('/wheels', (req, res) => {
-    res.render('categories/wheels',{title: 'Wheels'});
+    getItems(req,res,'wheels');
 })
 
 app.get('/new', (req, res) => {
