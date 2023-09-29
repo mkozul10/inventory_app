@@ -19,7 +19,7 @@ Posts are right now visible to everyone who visits page, and everyone can create
 ![picture](pictures/2.png)
 
 
-3. When product is deleted 'unlnk' function from 'fs' is used to remove old file from public directory.
+3. When product is deleted 'unlink' function from 'fs' is used to remove old file from public directory.
 
 ![picture](pictures/3.png)
 
